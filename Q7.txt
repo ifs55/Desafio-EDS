@@ -1,0 +1,25 @@
+Para modelar os atendimentos médicos e seus diagnósticos no banco de dados de staging, eu sugiro a criação de duas tabelas: uma tabela para os atendimentos e outra tabela para os diagnósticos, com uma relação muitos-para-muitos entre elas, utilizando uma tabela de associação. 
+A tabela de atendimentos (por exemplo, stg_atendimento) pode ter as seguintes colunas:
+ 
+
+id: identificador único do atendimento 
+
+paciente_id: identificador do paciente que recebeu o atendimento data_atendimento: data em que o atendimento foi realizado 
+
+hospital_id: identificador do hospital onde o atendimento foi realizado.
+
+Já a tabela de diagnósticos (por exemplo, stg_diagnostico) pode ter as seguintes colunas: 
+
+id: identificador único do diagnóstico 
+
+descricao: descrição do diagnóstico 
+
+cid: código CID do diagnóstico 
+
+Para relacionar os diagnósticos aos atendimentos, podemos criar uma terceira tabela de associação (por exemplo, stg_atendimento_diagnostico) com as seguintes colunas:
+
+atendimento_id: identificador do atendimento relacionado ao diagnóstico
+ 
+diagnostico_id: identificador do diagnóstico relacionado ao atendimento 
+
+Dessa forma, podemos ter vários diagnósticos associados a um único atendimento e vários atendimentos associados a um único diagnóstico. Isso permite uma modelagem mais flexível e escalável, possibilitando a inclusão de novos diagnósticos e atendimentos sem a necessidade de alterações na estrutura da tabela.
